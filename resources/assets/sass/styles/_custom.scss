@@ -790,3 +790,25 @@
 .nav-tabs>li>a {
   color: $default-txt-color;
 }
+
+.owl-carousel .bg-img {
+  filter: saturate(0%);
+}
+
+.car-prices {
+  .thumbnail {
+    h3 {
+      font-size: 1.3em;
+    }
+    table {
+      font-size: .85em;
+      th, td {
+        padding: 2px 5px;
+      }
+    }
+    a {
+      font-weight: 700;
+      width: 100%;
+    }
+  }
+}

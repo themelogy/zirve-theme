@@ -22,7 +22,7 @@
 {!! Theme::script('js/gridrotator.js') !!}
 @stack('js-stack')
 {!! Asset::js() !!}
-{!! Theme::script('js/custom.js?v=10') !!}
+{!! Theme::script('js/custom.js?v=30') !!}
 @stack('js-inline')
 
 <script type="text/javascript">

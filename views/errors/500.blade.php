@@ -10,7 +10,7 @@
             <div class="bg-mask"></div>
             <div class="bg-blur" style="background-image:url({!! Theme::url('img/slider/slide-1.jpg') !!});"></div>
             <div class="bg-holder-content full text-white">
-                <a class="logo-holder" href="index.html">
+                <a class="logo-holder" href="{{ url('') }}">
                     <img src="{{ Theme::url('img/logo/logo-rw.svg') }}" alt="{{ setting('theme::company-name') }} logo" title="{{ setting('theme::company-name') }} logo" />
                 </a>
                 <div class="full-center">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Menu::render('footer', \Themes\Autorent\Presenter\FooterMenuErrorPresenter::class) !!}
+                {!! Menu::render('footer', \Themes\Zirve\Presenter\FooterMenuErrorPresenter::class) !!}
             </div>
         </div>
     </div>

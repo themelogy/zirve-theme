@@ -2,7 +2,7 @@
     @foreach($slides as $slide)
     <div class="bg-holder full">
         <div class="bg-mask"></div>
-        <div class="bg-img" style="background-image:url({!! $slide->present()->firstImage(1170,400,'fit',50) !!});"></div>
+        <div class="bg-img" style="background-image:url({!! $slide->present()->firstImage(1100,400,'fit',50) !!});"></div>
     </div>
     @endforeach
 </div>
