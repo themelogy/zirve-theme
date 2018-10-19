@@ -11,7 +11,7 @@
             <div class="bg-blur" style="background-image:url({!! Theme::url('img/slider/slide-1.jpg') !!});"></div>
             <div class="bg-holder-content full text-white">
                 <a class="logo-holder" href="{{ url('') }}">
-                    <img src="{{ Theme::url('img/logo/logo-rw.svg') }}" alt="{{ setting('theme::company-name') }} logo" title="{{ setting('theme::company-name') }} logo" />
+                    <img src="{{ Theme::url('img/logo/logo-wbg.svg') }}" alt="{{ setting('theme::company-name') }} logo" title="{{ setting('theme::company-name') }} logo" />
                 </a>
                 <div class="full-center">
                     <div class="container">

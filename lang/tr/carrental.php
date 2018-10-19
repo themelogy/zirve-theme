@@ -5,6 +5,7 @@ return [
         'rental cars'     => 'Kiralık Araçlar',
         'prices'          => 'Kiralık Araç Fiyatları',
         'car'             => 'Kiralık :car',
+        'sort'            => 'Kiralık :class :brand Araçlar',
         'reservations'    => 'Kiralık :car',
         'start price'     => ':price TL\'den başlayan fiyatlar',
         'loading'         => 'Yükleniyor',

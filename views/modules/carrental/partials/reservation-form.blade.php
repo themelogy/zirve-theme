@@ -5,7 +5,7 @@
         {{ Session::get('success') }}
     </div>
 @endif
-{!! Form::open(['route'=>'carrental.reservation.create', 'method'=>'post']) !!}
+{!! Form::open(['route'=>'carrental.reservation.create', 'method'=>'post', 'rel'=>'nofollow']) !!}
 {!! Form::hidden('car_id', Request::get('car_id')) !!}
 <div class="row">
     <div class="col-md-4">

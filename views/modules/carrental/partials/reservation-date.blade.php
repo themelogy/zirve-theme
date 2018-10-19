@@ -1,4 +1,4 @@
-{!! Form::open(['route'=>'carrental.reservation.update', 'method'=>'put']) !!}
+{!! Form::open(['route'=>'carrental.reservation.update', 'method'=>'put', 'rel'=>'nofollow']) !!}
 {!! Form::hidden('car_id', $car->id) !!}
 <div class="row">
     <div class="col-md-12">

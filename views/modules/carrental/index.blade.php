@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-    @component('partials.components.title', ['breadcrumbs'=>'carrental.index'])
-        <h1 class="title">{{ trans('themes::carrental.titles.rental cars') }}</h1>
+    @component('partials.components.title', ['breadcrumbs'=>'carrental.sort'])
+        <h1 class="title">{{ $title }}</h1>
     @endcomponent
 
     <div class="container">
         <div class="gap"></div>
         <div class="booking-item-dates-change mb30">
-            {!! Form::open(['route' => 'carrental.index', 'method' => 'post']) !!}
+            {!! Form::open(['route' => ['carrental.index', 'sort'=>request()->get('sort'),'dir'=>request()->get('dir'), 'category'=>request()->get('category'), 'brand'=>request()->get('brand')], 'method' => 'post']) !!}
                 <div class="row">
                     <div class="col-md-11">
                         <div class="row">

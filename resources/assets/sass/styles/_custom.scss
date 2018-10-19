@@ -711,15 +711,17 @@
     left: 10px !important;
   }
   address {
-    padding: 0;
+    padding: 0 10px;
     strong {
       display: block;
-      font-size: 1.2em;
-      font-weight: 700;
-      color: $default-theme-color;
-      padding: 5px 0;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: $default-txt-color;
+      padding: 10px 20px;
       margin-bottom: 10px;
+      background-color: darken($white, 5%);
       border-bottom: 1px solid darken($white, 10%);
+      @include border-radius(10px);
     }
     abbr {
       margin-right: 10px;
