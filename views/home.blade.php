@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('carrental::home.search2')
+    @include('carrental::home.search')
 
     @pageFindByOptions('settings.show_page_home', 'home')
 

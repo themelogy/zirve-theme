@@ -2,7 +2,7 @@
     <ul class="top-user-area-list list list-horizontal list-border socials">
         <li>
             <div class="top-phone">
-                <a href="tel:{{ setting('theme::phone') }}"><i class="fa fa-phone-square mr5"></i> {{ setting('theme::phone') }}</a>
+                <a rel="nofollow" href="tel:{{ setting('theme::mobile') }}"><i class="fa fa-phone-square mr5"></i> {{ setting('theme::mobile') }}</a>
             </div>
         </li>
         <li>

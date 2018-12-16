@@ -12,7 +12,7 @@
 
     @yield('content')
 
-    @include('partials.footer2')
+    @include('partials.footer')
 
     @include('partials.scripts')
 </div>

@@ -7,13 +7,13 @@
 
     <div class="page-content">
         <div class="container">
-            <div class="col-md-3">
-                <aside class="booking-filters mb10" style="width: 100%;">
-                @faqCategories()
-                </aside>
-            </div>
             <div class="col-md-9">
                 {!! $faq->content !!}
+            </div>
+            <div class="col-md-3">
+                <aside class="booking-filters mb10" style="width: 100%;">
+                    @faqCategories()
+                </aside>
             </div>
         </div>
     </div>

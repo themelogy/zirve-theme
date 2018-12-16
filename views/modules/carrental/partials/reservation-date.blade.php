@@ -47,14 +47,18 @@
 <button name="reservationUpdate" type="submit" class="btn btn-primary" value="1">KİRALA</button>
 {!! Form::close() !!}
 
-@push('js-stack')
+@push('css-stack')
     {!! Theme::style('vendor/select2/dist/css/select2.min.css') !!}
-    {!! Theme::script('vendor/select2/dist/js/select2.min.js') !!}
+@endpush
+
+@push('js-stack')
+    {!! Theme::script('vendor/select2/dist/js/select2.min.js', ['defer']) !!}
+    <script src="{{ elixir('js/datetime.min.js', 'themes/zirve') }}" defer></script>
 @endpush
 
 @push('js-inline')
-    <script>
-        (function () {
+    <script async>
+        document.addEventListener("DOMContentLoaded", function(event) {
             $('input.date-pick, .input-daterange, .date-pick-inline').datepicker({
                 todayHighlight: true,
                 language: "tr",
@@ -78,6 +82,6 @@
             });
 
             $('select').select2();
-        })(jQuery);
+        });
     </script>
 @endpush

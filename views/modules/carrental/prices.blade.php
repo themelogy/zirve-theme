@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@php
+    $page = Page::findBySlug(trans('carrental::routes.prices'));
+@endphp
+
 @section('content')
     @component('partials.components.title', ['breadcrumbs'=>'carrental.prices'])
         <h1 class="title">{{ trans('themes::carrental.titles.prices') }}</h1>
@@ -59,6 +63,9 @@
             @endforeach
         </div>
         @endforeach
+        @if($page)
+        @pageTags($page, 5)
+        @endif
     </div>
     <div class="gap"></div>
 @endsection

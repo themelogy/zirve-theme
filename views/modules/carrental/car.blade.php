@@ -67,3 +67,7 @@
         <div class="gap gap-small"></div>
     </div>
 @endsection
+
+@push('js-stack')
+    {!! Theme::script('js/fotorama.js', ['defer']) !!}
+@endpush

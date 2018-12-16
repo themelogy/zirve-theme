@@ -1,181 +1,83 @@
-'use strict';
+var gulp = require('gulp');
+var shell = require('gulp-shell');
+var elixir = require('laravel-elixir');
+var del = require('del');
+var themeInfo = require('./theme.json');
 
-const gulp      = require('gulp'),
-    shell       = require('gulp-shell'),
-    sass        = require('gulp-sass'),
-    clean       = require('gulp-clean'),
-    del         = require('del'),
-    concat      = require('gulp-concat'),
-    browserSync = require('browser-sync').create(),
-    runSequence = require('run-sequence'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    minify      = require('gulp-minify'),
-    less        = require('gulp-less'),
-    minifyCss   = require('gulp-minify-css'),
-    merge       = require('merge-stream'),
-    themeInfo   = require('./theme.json');
+process.env.DISABLE_NOTIFIER = true;
 
-let path, theme, assets, resource = {};
+elixir.config.publicPath = 'assets';
+elixir.config.sourcemaps = true;
 
-path = {
-    "public"      : "../../public",
-    "theme"       : "../../public/themes/" + themeInfo.name.toLowerCase(),
-    "assets"      : "assets",
-    "resource"    : "resources",
-    "css"         : "/css",
-    "js"          : "/js",
-    "sass"        : "/sass",
-    "video"       : "/videos",
-    "image"       : "/img",
-    "vendor"      : "/vendor",
-    "maps"        : "../maps"
-};
+var publicPath = '../../public';
+var themePath = publicPath + '/themes/' + themeInfo.name.toLowerCase();
+var cssPath = themePath + '/css';
+var jsPath =  themePath + '/js';
 
-theme = {
-    "name"      : themeInfo.name,
-    "path"      : path.theme,
-    "js"        : path.theme + path.js,
-    "css"       : path.theme + path.css,
-    "maps"      : path.maps
-};
+var Task = elixir.Task;
 
-assets = {
-    "path"      : path.assets,
-    "css"       : path.assets + path.css,
-    "js"        : path.assets + path.js,
-    "image"     : path.assets + path.image,
-    "video"     : path.assets + path.video,
-    "vendor"    : path.assets + path.vendor,
-    "maps"      : path.maps
-};
-
-resource = {
-    "path"      : path.resource,
-    "vendor"    : path.resource + path.vendor,
-    "extVendor" : path.resource + '/ext-vendor',
-    "assets"    : path.resource + '/' + path.assets
-};
-
-resource.asset = {
-    "css"       : resource.assets + path.css,
-    "js"        : resource.assets + path.js,
-    "image"     : resource.assets + path.image,
-    "video"     : resource.assets + path.video,
-    "vendor"    : resource.assets + path.vendor,
-    "sass"      : resource.assets + path.sass,
-    "maps"      : path.maps
-};
-
-let vendorCopy = {
-    src: [
-    ],
-    dest: [
-    ]
-};
-
-gulp.task('sass', function () {
-    return gulp.src([
-        resource.asset.sass + '/**/*.scss'
-    ])
-        .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(sourcemaps.write(resource.asset.maps))
-        .pipe(gulp.dest(resource.asset.css))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
-
-gulp.task('sass-public', function () {
-    return gulp.src([
-        resource.asset.sass + '/**/*.scss'
-    ])
-        .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(sourcemaps.write(theme.maps))
-        .pipe(gulp.dest(theme.css))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
-
-gulp.task('clear-vendor', function(){
-    return del(resource.asset.vendor+"/**/*", {force: true});
-});
-
-gulp.task('vendor-copy', function () {
-   for (let i = 0; i < vendorCopy.src.length; i++) {
-       gulp.src(vendorCopy.src[i])
-           .pipe(gulp.dest(vendorCopy.dest[i]));
-   }
-   return;
-});
-
-gulp.task('scripts', function(){
-    del(resource.asset.js+'/custom.min.js',{force:true});
-    return gulp.src(resource.asset.js+'/custom.js')
-        .pipe(minify({
-            ext: {
-                min: '.min.js'
-            }
-        }))
-        .pipe(gulp.dest(resource.asset.js));
-});
-
-
-gulp.task('scripts-copy', ['scripts'], function(){
-    return gulp.src(resource.asset.js+'/**/*')
-        .pipe(gulp.dest(theme.js))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
-
-gulp.task('clear-assets', function(){
-    return del(assets.path+"/**/*", {force: true});
-});
-
-gulp.task('copy', ['clear-assets'], function () {
-    return gulp.src(resource.assets+'/**/*')
-        .pipe(gulp.dest(assets.path));
-});
-
-gulp.task('stylistPublish', function(){
-    return gulp.src("").pipe(shell("php ../../artisan stylist:publish " + theme.name));
-});
-
-gulp.task('clear-public', function(){
-    return del(theme.path+"/**/*", {force: true});
-});
-
-gulp.task('production', ['clear-public'], function(){
-    runSequence('sass', 'scripts', 'vendor-copy', 'copy', 'stylistPublish');
-});
-
-// Configure the proxy server for livereload
-var proxyServer = "http://dev.zirve.com";
-
-var arrAddFiles = [
-    'views/**/*.php'
-];
-
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        proxy: proxyServer,
-        files: arrAddFiles,
-        ghostMode: {
-            clicks: true,
-            location: true,
-            forms: true,
-            scroll: true
-        },
-        notify: true,
-        open: false
+elixir.extend('del', function(path) {
+    new Task('del', function() {
+        return del(path, {force:true});
     });
 });
 
-gulp.task('watch', ['browser-sync'], function () {
-    gulp.watch([resource.asset.sass + '/**/*.scss'], ['sass-public']);
-    gulp.watch([resource.asset.js + '/**/*.js'], ['scripts-copy']);
-    gulp.watch('views/**/*.php', browserSync.reload);
+elixir.extend('stylistPublish', function() {
+    new Task('stylistPublish', function() {
+        return gulp.src("").pipe(shell("php ../../artisan stylist:publish " + themeInfo.name));
+    });
+});
+
+elixir(function (mix) {
+
+    mix.del(['assets/css', 'assets/js']);
+    mix.del(themePath+'/**');
+
+    mix.sass(
+        'styles.scss', 'resources/assets/css/styles.css'
+    );
+
+    mix.styles([
+        'bootstrap.css',
+        'font-awesome.css',
+        'icomoon.css',
+        'styles.css'
+    ],'resources/assets/css/style.min.css');
+
+    mix.scripts([
+        'bootstrap.js',
+        'slimmenu.js',
+        'nicescroll.js',
+        'dropit.js',
+        'icheck.js',
+    ], 'resources/assets/js/vendor.min.js');
+
+    mix.scripts([
+        'bootstrap-datepicker.js',
+        'datepicker-locales/bootstrap-datepicker.tr.min.js',
+        'bootstrap-timepicker.js'
+    ], 'resources/assets/js/datetime.min.js');
+
+    mix.scripts([
+        '../vendor/vue/dist/vue.min.js',
+        '../vendor/axios/dist/axios.min.js',
+        '../vendor/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min.js'
+    ], 'resources/assets/js/contact.min.js');
+
+    mix.scripts([
+        'custom.js'
+    ], 'resources/assets/js/custom.min.js');
+
+    mix.copy('resources/assets', 'assets');
+
+    mix.version([
+        'css/style.min.css',
+        'js/datetime.min.js',
+        'js/vendor.min.js',
+        'js/contact.min.js',
+        'js/custom.min.js'
+    ],'assets');
+
+    mix.stylistPublish();
+
 });

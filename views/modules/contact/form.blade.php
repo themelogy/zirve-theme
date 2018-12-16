@@ -64,82 +64,82 @@
 </div>
 
 @push('js-stack')
-    {!! Theme::script('vendor/vue/dist/vue.min.js') !!}
-    {!! Theme::script('vendor/axios/dist/axios.min.js') !!}
-    {!! Theme::script('vendor/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min.js') !!}
+    <script src="{{ elixir('js/contact.min.js', 'themes/zirve') }}" defer></script>
 @endpush
 
 @push('js-inline')
-    <script>
-        @if(App::environment()=='local')
-            Vue.config.devtools = true;
-        @endif
-            window.axios.defaults.headers.common['X-CSRF-TOKEN']     = '{{ csrf_token() }}';
-        window.axios.defaults.headers.common['Cache-Control']    = 'no-cache';
-        new Vue({
-            el: '#contact_form',
-            data: {
-                input: {
-                    first_name: '',
-                    last_name: '',
-                    phone: '',
-                    email:'',
-                    enquiry: '',
-                    captcha_contact: ''
+    <script async>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            @if(App::environment()=='local')
+                Vue.config.devtools = true;
+            @endif
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
+            window.axios.defaults.headers.common['Cache-Control'] = 'no-cache';
+            new Vue({
+                el: '#contact_form',
+                data: {
+                    input: {
+                        first_name: '',
+                        last_name: '',
+                        phone: '',
+                        email: '',
+                        enquiry: '',
+                        captcha_contact: ''
+                    },
+                    errors: {},
+                    success: false,
+                    successMessage: ''
                 },
-                errors: {},
-                success: false,
-                successMessage: ''
-            },
-            methods: {
-                submitForm: function (e) {
-                    e.preventDefault();
-                    this.success = false;
-                    this.input.captcha_contact = grecaptcha.getResponse(captcha_contact);
-                    this.ajaxStart(true);
-                    axios.post('{{ route('api.contact.send') }}', this.$data.input)
-                        .then(response => {
-                            this.successMessage = response.data.message;
-                            this.success = true;
-                            this.resetForm();
-                            this.ajaxStart(false);
-                        })
-                        .catch(error => {
-                            this.errors = error.response.data;
-                            this.success = false;
-                            this.ajaxStart(false);
-                            grecaptcha.reset(captcha_contact);
+                methods: {
+                    submitForm: function (e) {
+                        e.preventDefault();
+                        this.success = false;
+                        this.input.captcha_contact = grecaptcha.getResponse(captcha_contact);
+                        this.ajaxStart(true);
+                        axios.post('{{ route('api.contact.send') }}', this.$data.input)
+                            .then(response => {
+                                this.successMessage = response.data.message;
+                                this.success = true;
+                                this.resetForm();
+                                this.ajaxStart(false);
+                            })
+                            .catch(error => {
+                                this.errors = error.response.data;
+                                this.success = false;
+                                this.ajaxStart(false);
+                                grecaptcha.reset(captcha_contact);
+                            });
+                    },
+                    getError: function (field) {
+                        if (this.errors[field]) {
+                            return this.errors[field][0];
+                        }
+                    },
+                    hasError: function (field) {
+                        if (this.errors[field]) {
+                            return true;
+                        }
+                        return false;
+                    },
+                    resetForm: function () {
+                        var self = this;
+                        Object.keys(this.$data.input).forEach(function (key, index) {
+                            self.$data.input[key] = '';
                         });
-                },
-                getError: function (field) {
-                    if(this.errors[field]) {
-                        return this.errors[field][0];
-                    }
-                },
-                hasError: function (field) {
-                    if(this.errors[field]) {
-                        return true;
-                    }
-                    return false;
-                },
-                resetForm: function () {
-                    var self = this;
-                    Object.keys(this.$data.input).forEach(function(key, index){
-                        self.$data.input[key] = '';
-                    });
-                },
-                ajaxStart: function (loading) {
-                    if (loading) {
-                        $('form', this.$el).LoadingOverlay("show",{
-                            zIndex: 10
-                        });
-                    } else {
-                        $('form', this.$el).LoadingOverlay("hide",{
-                            zIndex: 10
-                        });
+                    },
+                    ajaxStart: function (loading) {
+                        if (loading) {
+                            $('form', this.$el).LoadingOverlay("show", {
+                                zIndex: 10
+                            });
+                        } else {
+                            $('form', this.$el).LoadingOverlay("hide", {
+                                zIndex: 10
+                            });
+                        }
                     }
                 }
-            }
+            });
         });
     </script>
     {!! Captcha::setLang(locale())->scriptWithCallback(['captcha_contact']) !!}

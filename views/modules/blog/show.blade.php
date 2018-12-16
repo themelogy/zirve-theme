@@ -38,6 +38,5 @@
             </div>
         </div>
     </div>
-    <hr/>
-    @carFindByOptions('settings.show_home', 'home')
+    <div class="gap"></div>
 @endsection
