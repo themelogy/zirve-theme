@@ -8,7 +8,7 @@
     <div class="container">
         <div class="gap"></div>
         <div class="booking-item-dates-change mb30">
-            {!! Form::open(['route' => ['carrental.index', 'sort'=>request()->get('sort'),'dir'=>request()->get('dir'), 'category'=>request()->get('category'), 'brand'=>request()->get('brand')], 'method' => 'post']) !!}
+            {!! Form::open(['route' => ['carrental.index', 'sort'=>request()->get('sort'),'dir'=>request()->get('dir'), 'category'=>request()->get('category'), 'brand'=>request()->get('brand')], 'method' => 'post', 'rel'=>'nofollow']) !!}
                 <div class="row">
                     <div class="col-md-11">
                         <div class="row">
@@ -84,7 +84,7 @@
 
                     <ul class="nav-drop-menu">
                         @foreach($sortList->all() as $sort)
-                            <li>{!! link_to_route('carrental.index', $sort['name'], ['sort'=>$sort['key'], 'dir'=>$sort['dir'], 'category'=>request()->get('category'), 'brand'=>request()->get('brand')]) !!}</li>
+                            <li>{!! link_to_route('carrental.index', $sort['name'], ['sort'=>$sort['key'], 'dir'=>$sort['dir'], 'category'=>request()->get('category'), 'brand'=>request()->get('brand')], ['rel'=>'nofollow']) !!}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -92,7 +92,7 @@
                 <ul class="booking-list">
                     @forelse($cars as $car)
                     <li>
-                        <a class="booking-item" href="{{ $car->url }}">
+                        <a class="booking-item" href="{{ $car->url }}" rel="nofollow">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="booking-item-car-img">

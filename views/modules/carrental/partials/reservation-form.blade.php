@@ -1,4 +1,5 @@
 <h4 class="lh1em mb10">Rezervasyon Bilgileri</h4>
+<div class="thumbnail" style="padding:20px !important; background-color: #f9f9f9;">
 @if (Session::has('success'))
     <div class="alert alert-success fade in alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -53,15 +54,16 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-7">
-        {!! Form::submit('REZERVASYON YAP', ['class'=>'btn btn-sm btn-primary']) !!}
-        <a class="btn btn-sm btn-danger btn-cancel" href="{{ route('carrental.index') }}">İPTAL</a>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-8">
         <div class="form-group mt10{{ $errors->has("g-recaptcha-response") ? ' has-error' : '' }}">
             {!! Captcha::display() !!}
             {!! $errors->first("g-recaptcha-response", '<span class="help-block">:message</span>') !!}
         </div>
     </div>
+    <div class="col-md-4">
+        {!! Form::submit('REZERVASYON YAP', ['class'=>'btn btn-sm btn-primary']) !!}
+        <a class="btn btn-sm btn-danger btn-cancel" href="{{ route('carrental.index') }}">İPTAL</a>
+    </div>
 </div>
 {!! Form::close() !!}
+</div>

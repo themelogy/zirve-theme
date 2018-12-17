@@ -83,8 +83,11 @@
 @endpush
 
 @push('js-stack')
-    {!! Theme::script('vendor/select2/dist/js/select2.min.js', ['defer']) !!}
     <script src="{{ elixir('js/datetime.min.js', 'themes/zirve') }}" defer></script>
+    {!! Theme::script('vendor/select2/dist/js/select2.min.js', ['defer']) !!}
+@endpush
+
+@push('js-inline')
     <script async>
         document.addEventListener("DOMContentLoaded", function(event) {
             $('.date-pick').datepicker({

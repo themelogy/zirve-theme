@@ -45,6 +45,10 @@ elixir(function (mix) {
     ],'resources/assets/css/style.min.css');
 
     mix.scripts([
+        'jquery.js'
+    ], 'resources/assets/js/jquery.min.js');
+
+    mix.scripts([
         'bootstrap.js',
         'slimmenu.js',
         'nicescroll.js',
