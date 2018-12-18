@@ -11,12 +11,10 @@
     <div class="container">
         <div class="navbar">
             <div class="navbar-header">
-                @if(route_is('homepage')) <h1> @endif
                 <a class="logo" href="{{ LaravelLocalization::getLocalizedURL(locale(), route('homepage')) }}">
                     <img src="{{ Theme::url('img/logo/logo-wbg.svg') }}" alt="{{ setting('theme::company-name') }}" />
                     <span class="hidden">{{ setting('theme::company-name') }}</span>
                 </a>
-                @if(route_is('homepage')) </h1> @endif
             </div>
             <div class="nav">
                 {!! Menu::render('header', \Themes\Zirve\Presenter\HeaderMenuPresenter::class) !!}

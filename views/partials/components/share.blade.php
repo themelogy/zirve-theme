@@ -4,20 +4,25 @@
 @endphp
 <div id="share" class="{{ $theme }}"></div>
 
+@push('css-stack')
+    {!! Theme::style('vendor/jssocials/dist/jssocials.css') !!}
+    {!! Theme::style($layout) !!}
+@endpush
+
 @push('js-stack')
-{!! Asset::add(Theme::url('vendor/jssocials/dist/jssocials.min.js')) !!}
-{!! Asset::add(Theme::url('vendor/jssocials/dist/jssocials.css')) !!}
-{!! Asset::add(Theme::url($layout)) !!}
+    {!! Theme::script('vendor/jssocials/dist/jssocials.min.js', ['defer']) !!}
 @endpush
 
 @push('js-inline')
-<script>
-    $(document).ready(function () {
-        $("#share").jsSocials({
-            shareIn: "popup",
-            showLabel: false,
-            showCount: "inside",
-            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+<script async>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $(document).ready(function () {
+            $("#share").jsSocials({
+                shareIn: "popup",
+                showLabel: false,
+                showCount: "inside",
+                shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+            });
         });
     });
 </script>

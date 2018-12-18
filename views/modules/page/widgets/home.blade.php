@@ -1,6 +1,9 @@
 @if($pages->count()>0)
 <div class="bg-color line text-white slogans-home">
     <div class="container">
+        <div class="title-home">
+            <h1>{{ setting('theme::company-name') }}</h1>
+        </div>
         <div class="gap"></div>
         <div class="row row-wrap" data-gutter="100">
             @foreach($pages as $page)

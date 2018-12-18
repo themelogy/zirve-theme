@@ -18,7 +18,7 @@
     {!! Theme::style('css/bootstrap.css') !!}
     {!! Theme::style('css/font-awesome.css') !!}
     {!! Theme::style('css/icomoon.css') !!}
-    {!! Theme::style('css/styles.css?v=30') !!}
+    {!! Theme::style('css/styles.css') !!}
 @else
     <link rel="stylesheet" href="{{ elixir('css/style.min.css', 'themes/zirve') }}">
 @endif

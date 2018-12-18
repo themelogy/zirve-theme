@@ -32,5 +32,4 @@
         </div>
         @endforeach
     </div>
-    <div class="gap"></div>
 </div>
