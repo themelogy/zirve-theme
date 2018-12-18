@@ -8,7 +8,7 @@
                         @if($image = $post->present()->firstImage(240,125,'fit',50))
                         <header class="thumb-header">
                             <a class="hover-img curved" href="{{ $post->url }}">
-                                <img class="img-responsive img-thumbnail img-rounded" src="{{ $image }}" alt="{{ $post->title }}" title="{{ $post->title }}" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                <img class="img-responsive img-thumbnail img-rounded lazyloader" src="{{ $image }}" alt="{{ $post->title }}" title="{{ $post->title }}" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                             </a>
                         </header>
                         @endif

@@ -10,7 +10,7 @@
             <div class="col-md-4">
                 <div class="thumb">
                     <header class="thumb-header">
-                        <a href="{{ $page->url }}"><img class="img-responsive" src="{{ $page->present()->coverImage(300,100,'fit',50) }}" alt="{{ $page->title }}" /></a>
+                        <a href="{{ $page->url }}"><img class="img-responsive lazyloader" src="{{ $page->present()->coverImage(300,100,'fit',50) }}" alt="{{ $page->title }}" /></a>
                         <h4 class="thumb-title"><a href="{{ $page->url }}">{{ $page->title }}</a></h4>
                     </header>
                     <div class="thumb-caption">

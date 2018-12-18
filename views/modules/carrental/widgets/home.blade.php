@@ -5,9 +5,9 @@
         <div>
             <div class="thumb">
                 <header class="thumb-header">
-                    {!! Html::image($car->brand->present()->firstImage(20,null,'resize',50), $car->brand->name, ['style'=>'width:20px;']) !!}
+                    {!! Html::image($car->brand->present()->firstImage(20,null,'resize',50), $car->brand->name, ['style'=>'width:20px;', 'class'=>'lazyloader']) !!}
                     <a href="{{ $car->url }}">
-                        <img src="{{ $car->present()->firstImage(240,null,'resize',50) }}" alt="{{ $car->fullname }}" title="{{ $car->fullname }}" />
+                        <img class="lazyloader" src="{{ $car->present()->firstImage(240,null,'resize',50) }}" alt="{{ $car->fullname }}" title="{{ $car->fullname }}" />
                     </a>
                 </header>
                 <div class="thumb-caption">

@@ -12,12 +12,12 @@
                         @if($post->files->count()>1)
                             <div class="fotorama" data-allowfullscreen="true">
                             @foreach($post->present()->images(800,null,'resize','80') as $image)
-                            <img src="{{ $image }}" alt="{{ $post->title }} {{ $loop->iteration }}" title="{{ $post->title }} {{ $loop->iteration }}" />
+                            <img class="lazyloader" src="{{ $image }}" alt="{{ $post->title }} {{ $loop->iteration }}" title="{{ $post->title }} {{ $loop->iteration }}" />
                             @endforeach
                             </div>
                             @unset($image)
                         @else
-                            <img class="img-responsive" src="{{ $post->present()->firstImage(800,null,'resize',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" />
+                            <img class="img-responsive lazyloader" src="{{ $post->present()->firstImage(800,null,'resize',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" />
                         @endif
                     </header>
                     <div class="post-inner pb10">

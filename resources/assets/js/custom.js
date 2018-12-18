@@ -1,5 +1,11 @@
 "use strict";
 
+// document.addEventListener("DOMContentLoaded", function(event) {
+//     $(window).on('load', function () {
+//         $('#loader-wrapper').fadeOut('slow');
+//     });
+// });
+
 $('ul.slimmenu').slimmenu({
     resizeWidth: '992',
     collapserTitle: 'Menu',
@@ -7,6 +13,11 @@ $('ul.slimmenu').slimmenu({
     indentChildren: true,
     childrenIndenter: ''
 });
+
+var unveilImg = $(".lazyloader");
+if(unveilImg.length) {
+    unveilImg.unveil();
+}
 
 $('.btn').button();
 
@@ -221,6 +232,23 @@ $('.booking-item-container').children('.booking-item').click(function(event) {
         });
     }
 });
+
+var tid = setInterval(tagline_vertical_slide, 5000);
+
+// vertical slide
+function tagline_vertical_slide() {
+    var curr = $("#tagline ul li.active");
+    curr.removeClass("active").addClass("vs-out");
+    setTimeout(function() {
+        curr.removeClass("vs-out");
+    }, 500);
+
+    var nextTag = curr.next('li');
+    if (!nextTag.length) {
+        nextTag = $("#tagline ul li").first();
+    }
+    nextTag.addClass("active");
+}
 
 var loadDeferredStyles = function() {
     var addStylesNode = document.getElementById("deferred-styles");

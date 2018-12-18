@@ -4,7 +4,7 @@
         @foreach($posts as $post)
             <li>
                 <a href="{{ $post->url }}">
-                    <img class="img-rounded" src="{{ $post->present()->firstImage(100,50,'fit',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" />
+                    <img class="img-rounded lazyloader" src="{{ $post->present()->firstImage(100,50,'fit',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" />
                 </a>
                 <div class="thumb-list-item-caption">
                     <h5 class="thumb-list-item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h5>

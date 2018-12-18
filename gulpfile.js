@@ -54,6 +54,7 @@ elixir(function (mix) {
         'nicescroll.js',
         'dropit.js',
         'icheck.js',
+        '../vendor/jquery-unveil/jquery.unveil.min.js',
     ], 'resources/assets/js/vendor.min.js');
 
     mix.scripts([

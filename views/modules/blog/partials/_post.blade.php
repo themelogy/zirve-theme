@@ -1,7 +1,7 @@
 <div class="article post">
     <header class="post-header">
         <a class="hover-img" href="{{ $post->url }}">
-            <img src="{{ $post->present()->firstImage(360,180,'fit',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" /><i class="fa fa-link box-icon-# hover-icon round"></i>
+            <img class="lazyloader" src="{{ $post->present()->firstImage(360,180,'fit',80) }}" alt="{{ $post->title }}" title="{{ $post->title }}" /><i class="fa fa-link box-icon-# hover-icon round"></i>
         </a>
     </header>
     <div class="post-inner">

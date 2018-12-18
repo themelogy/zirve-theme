@@ -9,7 +9,7 @@
         <div class="row" data-gutter="120">
             <div class="col-md-6 r-line-lg">
                 <h2>{{ setting('theme::company-name') }}</h2>
-                @locations('locations')
+                @locations('accordion')
             </div>
             <div class="col-md-6">
                 @include('contact::form')

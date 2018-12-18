@@ -97,7 +97,7 @@
                                 <div class="col-md-3">
                                     <div class="booking-item-car-img">
                                         <div class="label label-warning">{{ $car->carclass->name }}</div>
-                                        {!! Html::image($car->present()->firstImage(180,null,'resize',80), $car->fullname, ['class'=>'mt5']) !!}
+                                        {!! Html::image($car->present()->firstImage(180,null,'resize',80), $car->fullname, ['class'=>'mt5 lazyloader']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
