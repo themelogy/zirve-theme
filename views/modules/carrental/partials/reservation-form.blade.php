@@ -1,9 +1,19 @@
 <h4 class="lh1em mb10">Rezervasyon Bilgileri</h4>
 <div class="thumbnail" style="padding:20px !important; background-color: #f9f9f9;">
-@if (Session::has('success'))
+@if(Session::has('success'))
     <div class="alert alert-success fade in alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         {{ Session::get('success') }}
+    </div>
+@endif
+@if(Session::has('errors'))
+    <div class="alert alert-danger fade in alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <ul style="font-size: 12px;">
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+        </ul>
     </div>
 @endif
 {!! Form::open(['route'=>'carrental.reservation.create', 'method'=>'post', 'rel'=>'nofollow']) !!}

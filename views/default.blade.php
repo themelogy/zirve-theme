@@ -17,7 +17,7 @@
                 @include('page::partials.image')
             @endif
 
-            @pageTags($page, 5)
+            @pageTags($page, 10)
         </div>
     </div>
 
