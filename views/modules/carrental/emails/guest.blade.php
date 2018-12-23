@@ -1,3 +1,10 @@
+@php
+    setlocale(LC_TIME,
+        'tr_TR.UTF-8'
+    );
+    \Carbon\Carbon::setLocale(locale());
+@endphp
+
 @component('mail::message')
 
 @component('mail::promotion')
