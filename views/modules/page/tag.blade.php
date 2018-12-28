@@ -15,7 +15,7 @@
                                 <div class="child-page thumbnail">
                                     @if($page->hasImage())
                                     <a href="{{ $page->url }}">
-                                        <img class="rounded" src="{{ $page->present()->firstImage(356, 150, "fit", 50) }}" alt="{{ $page->title }} - {{ $tag->name }}" />
+                                        <img src="{{ $page->present()->firstImage(356, 150, "fit", 50) }}" alt="{{ $page->title }} - {{ $tag->name }}" />
                                     </a>
                                     @endif
                                     <div class="caption">

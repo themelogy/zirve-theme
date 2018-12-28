@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="col-lg-7 col-sm-12 pt25">
-                <p class="text-justify"><strong>Zirve Araç Kiralama</strong> 2006 yılından beri Ankara merkezli olarak siz değerli müşterilerimize iş ve gezi amaçlı seyahatlerinizde tüm talep ve beklentilerinizi en iyi ve en hızlı şekilde gerçekleştirmedeki kararlılığıyla, <strong>ankara araç kiralama firmaları</strong> arasından <strong>ucuz araç kiralama</strong> ve en iyi hizmet anlayışına sahip olan firmamız, teknolojideki ve sektöründeki gelişmeleri, yenilikleri sizlere sunmakta gecikmeyen, filosunun genişliğiyle, yeniliğiyle, kalitesiyle ve güvenilirliğiyle siz müşterilerimize <strong>araç kiralama</strong> hizmeti vermekten her zaman mutluluk duyarız.</p>
+                {!! Block::get('page-intro') !!}
             </div>
             <div class="col-lg-2 col-sm-12">
                 <div class="call-center pull-right-lg">

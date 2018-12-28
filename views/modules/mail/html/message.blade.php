@@ -1,7 +1,7 @@
 @component('mail::layout')
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            <img style="padding: 10px; max-height: 70px;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('themes/zirve/img/logo/logo-w.png'))) }}" alt="{{ setting('theme::company-name') }}" />
+            <img style="text-align: center; padding: 10px; max-height: 70px;" src="{{ url('themes/zirve/img/logo/logo-w.png') }}" alt="{{ setting('core::site-name') }}" />
         @endcomponent
     @endslot
 
@@ -19,6 +19,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
+            {{ setting('theme::address') }} <br/> {{ setting('theme::phone') }} - {{ setting('theme::email') }}<br/>
             &copy; {{ date('Y') }} {{ setting('theme::company-name') }}. Tüm hakları saklıdır.
         @endcomponent
     @endslot
