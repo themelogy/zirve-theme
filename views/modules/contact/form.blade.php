@@ -102,6 +102,7 @@
                                 this.success = true;
                                 this.resetForm();
                                 this.ajaxStart(false);
+                                fbq('track', 'Contact');
                             })
                             .catch(error => {
                                 this.errors = error.response.data;

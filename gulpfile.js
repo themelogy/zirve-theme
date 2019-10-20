@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var shell = require('gulp-shell');
 var elixir = require('laravel-elixir');
-var del = require('del');
+// var del = require('del');
 var themeInfo = require('./theme.json');
 
 process.env.DISABLE_NOTIFIER = true;
@@ -16,11 +16,11 @@ var jsPath =  themePath + '/js';
 
 var Task = elixir.Task;
 
-elixir.extend('del', function(path) {
-    new Task('del', function() {
-        return del(path, {force:true});
-    });
-});
+// elixir.extend('del', function(path) {
+//     new Task('del', function() {
+//         return del(path, {force:true});
+//     });
+// });
 
 elixir.extend('stylistPublish', function() {
     new Task('stylistPublish', function() {
@@ -30,8 +30,8 @@ elixir.extend('stylistPublish', function() {
 
 elixir(function (mix) {
 
-    mix.del(['assets/css', 'assets/js']);
-    mix.del(themePath+'/**');
+    // mix.del(['assets/css', 'assets/js']);
+    // mix.del(themePath+'/**');
 
     mix.sass(
         'styles.scss', 'resources/assets/css/styles.css'
@@ -51,7 +51,7 @@ elixir(function (mix) {
     mix.scripts([
         'bootstrap.js',
         'slimmenu.js',
-        'nicescroll.js',
+        // 'nicescroll.js',
         'dropit.js',
         'icheck.js',
         '../vendor/jquery-unveil/jquery.unveil.min.js',
