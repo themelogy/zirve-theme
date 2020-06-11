@@ -1,8 +1,5 @@
 {
-  "name": "zirve",
-  "authors": [
-    "sagsoz06 <designer@visualturk.net>"
-  ],
+  "name": "lion",
   "description": "",
   "main": "",
   "license": "MIT",
@@ -22,6 +19,7 @@
     "axios": "^0.18.0",
     "gasparesganga-jquery-loading-overlay": "^2.1.3",
     "jssocials": "^1.5.0",
-    "jquery-unveil": "^1.3.0"
+    "jquery-unveil": "^1.3.0",
+    "smartmenus": "^1.1.0"
   }
 }

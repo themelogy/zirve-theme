@@ -9,15 +9,15 @@
                 <div class="item">
                     <address title="{{ $location->name }}">
                         {{ $location->present()->address }}<br/>
-                        @isset($location->phone1)
+                        @if($location->phone1)
                             <abbr title="Telefon">T:</abbr><a href="tel:{{ $location->phone1 }}">{{ $location->phone1 }}</a><br/>
-                        @endisset
-                        @isset($location->phone2)
+                        @endif
+                        @if($location->phone2)
                             <abbr title="Telefon">T:</abbr><a href="tel:{{ $location->phone2 }}">{{ $location->phone2 }}</a><br/>
                         @endisset
-                        @isset($location->mobile)
-                            <abbr title="Mobil">M:</abbr><a href="tel:{{ $location->mobile }}">{{ $location->mobile }}</a>
-                        @endisset
+                        @if($location->fax)
+                            <abbr title="Faks">F:</abbr><a href="fax:{{ $location->fax }}">{{ $location->fax }}</a>
+                        @endif
                         <div class="mt20 google-map" style="width:100%; height: 150px;" id="map{{ $location->id }}"></div>
                     </address>
                 </div>
@@ -40,7 +40,7 @@
             var marker{{ $location->id }} = new google.maps.Marker({
                 position: coordinate{{ $location->id }},
                 map: map{{ $location->id }},
-                icon: "{{ Theme::url('img/logo/marker.svg') }}"
+                icon: "{{ Theme::url('img/marker.png') }}"
             });
             @endforeach
         }

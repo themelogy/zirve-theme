@@ -6,7 +6,7 @@
     @endcomponent
 
     <div class="page-content mb20">
-        <div class="container">
+        <div class="container txt-lg">
 
             @if(isset($page->parent) && ($page->parent->settings->show_menu ?? false) && !($page->settings->full_page ?? false))
                 @include('page::partials.menu')
@@ -19,6 +19,4 @@
             @pageTags($page, 10)
         </div>
     </div>
-
-    @carClasses('home.classes')
 @stop

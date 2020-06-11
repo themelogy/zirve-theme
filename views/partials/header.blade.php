@@ -9,16 +9,22 @@
         </div>
     </div>
     <div class="container">
-        <div class="navbar">
+        <nav class="navbar">
             <div class="navbar-header">
                 <a class="logo" href="{{ LaravelLocalization::getLocalizedURL(locale(), route('homepage')) }}">
-                    <img src="{{ Theme::url('img/logo/logo-wbg.svg') }}" alt="{{ setting('theme::company-name') }}" />
+                    <img src="{{ Theme::url('img/logo.svg') }}" alt="{{ setting('theme::company-name') }}" />
                     <span class="hidden">{{ setting('theme::company-name') }}</span>
                 </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headermobile" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-            <div class="nav">
-                {!! Menu::render('header', \Themes\Zirve\Presenter\HeaderMenuPresenter::class) !!}
+            <div class="collapse navbar-collapse" id="headermobile">
+                {!! Menu::render('header', \Themes\Lion\Presenter\HeaderMenuPresenter::class) !!}
             </div>
-        </div>
+        </nav>
     </div>
 </header>

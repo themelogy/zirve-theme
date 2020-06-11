@@ -5,20 +5,18 @@
 
 @stack('css-inline')
 
-{!! Theme::script('js/jquery.min.js', ['defer']) !!}
-<script src="{{ elixir('js/vendor.min.js', 'themes/zirve') }}" defer></script>
+{!! Theme::script('js/jquery.min.js') !!}
+{!! Theme::script('js/vendor.min.js') !!}
+{!! Theme::script('js/owl-carousel.js') !!}
 
-{!! Theme::script('js/owl-carousel.js', ['defer']) !!}
-
-@stack('js-stack')
 {!! Asset::js() !!}
+@stack('js-stack')
 
-<script src="{{ elixir('js/custom.min.js', 'themes/zirve') }}" defer></script>
+@if(env('APP_ENV')=='local')
+    {!! Theme::script('js/custom.js') !!}
+@else
+    {!! Theme::script('js/custom.min.js') !!}
+@endif
 
 @stack('js-inline')
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P455NSM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 @include('core::cookie-law')

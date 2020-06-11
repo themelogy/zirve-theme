@@ -2,21 +2,21 @@ footer#main-footer {
   @include linear-gradient(135deg, $footer-bg-color, darken($footer-bg-color, 10%));
   padding: 0;
   color: #e6e6e6;
-  font-size: 11px;
+  font-size: $footer-link-txt-size;
   line-height: 1.4em;
+  border-top: 1px solid darken($top-bg, 2%);
   .logo {
-    //margin-bottom: 15px;
+    display: block;
     img {
-      width: 100% !important;
-    }
-    @media (max-width: 991px) {
-      img {
-        width: 300px !important;
-      }
+      width: 100px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border:1px solid $top-bg;
+      background-color: #fff;
     }
   }
   a, h1, h2, h3, h4, h5,p {
-    color: darken($gray, 15%);
+    color: $footer-link-color;
   }
   .form-control {
     background: #121212;
@@ -30,15 +30,16 @@ footer#main-footer {
     padding: 20px 0 10px 0;
     background-color: $footer-bottom-bg-color;
     position: relative;
-    &:after {
-      content: " ";
-      position: absolute;
-      width: 50%;
-      border-top: 30px solid transparent;
-      border-right: 25vw solid darken($default-theme-color, 20%);
-      top:-30px;
-      right: 0;
-    }
+    border-top: 1px solid darken($top-bg, 2%);
+    //&:after {
+    //  content: " ";
+    //  position: absolute;
+    //  width: 50%;
+    //  border-top: 30px solid transparent;
+    //  border-right: 25vw solid darken($default-theme-color, 20%);
+    //  top:-30px;
+    //  right: 0;
+    //}
     @media (min-width: 991px) {
       [class*="col"] {
         padding: 0;
@@ -53,27 +54,45 @@ footer#main-footer {
   .social li a {
     font-size: 1.2em;
   }
+  .title {
+    color: $default-theme-color;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
 }
 
-.list-footer > li {
-  margin-bottom: 5px;
-  a {
-    position: relative;
-    padding-left: 15px;
-    &:before {
-      content: "\f054";
-      font-family: "FontAwesome", sans-serif;
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      left:0;
-      top:2px;
-      color: $default-theme-color;
+.list-footer {
+  //&:before {
+  //  position: absolute;
+  //  left: 0;
+  //  background-color: gray;
+  //  content: '';
+  //  top:0;
+  //  width: 1px;
+  //  height: 100%;
+  //}
+  > li {
+    margin-bottom: 5px;
+    a {
+      position: relative;
+      padding-left: 15px;
+      text-decoration: none;
+      &:before {
+        content: "\f105";
+        font-family: "FontAwesome", sans-serif;
+        position: absolute;
+        font-size: 1.25em;
+        width: 30px;
+        height: 30px;
+        left:0;
+        top:0;
+        color: $default-theme-color;
+      }
+      @include transition(all .2s);
     }
-    @include transition(all .2s);
-  }
-  > a:hover {
-    text-decoration: none;
-    color: $default-theme-color !important;
+    > a:hover {
+      text-decoration: none;
+      color: $default-theme-color !important;
+    }
   }
 }

@@ -9,10 +9,10 @@ return [
     'mobile'     => 'Mobil',
     'fax'        => 'Faks',
     'form'       => [
-        'title' => 'İletişim Formu'
+        'title' => 'Öneri ve Şikayetler'
     ],
     'messages'   => [
-        'info'    => 'Yukarıda belirtilen harita ve adres bilgilerimizden veya mesaj formunu doldurarak bize ulaşabilirsiniz.',
+        'info'    => 'Öneri ve şikayetlerinizi aşağıdaki formdan bize iletebilirsiniz.',
         'success' => 'Mesajınız için teşekkür ederiz. İncelenerek tarafınıza en kısa zamanda geri dönüş yapılacaktır.'
     ],
     'mail'       => [

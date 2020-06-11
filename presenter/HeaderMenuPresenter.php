@@ -1,4 +1,5 @@
-<?php namespace Themes\Zirve\Presenter;
+<?php
+namespace Themes\Lion\Presenter;
 
 use Nwidart\Menus\Presenters\Presenter;
 
@@ -9,7 +10,7 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getOpenTagWrapper()
     {
-        return PHP_EOL.'<ul class="slimmenu" id="slimmenu">'.PHP_EOL;
+        return PHP_EOL.'<ul id="main-menu" class="navbar-right sm sm-clean">'.PHP_EOL;
     }
 
     /**
@@ -17,6 +18,7 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getCloseTagWrapper()
     {
+        //$navigation_ext = \View::make('partials.header.navigation.navigation-ext');
         return PHP_EOL.'</ul>'.PHP_EOL;
     }
 
@@ -49,15 +51,17 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getMenuWithoutDropdownWrapper($item)
     {
-        return '<li'.$this->getActiveState($item).'><a href="'.$item->getUrl().'" '.$item->getAttributes().'>'.$item->getIcon().' '.$item->title.'</a></li>'.PHP_EOL;
+        $link = '<li><a'.$this->getActiveState($item).' href="'.$item->getUrl().'" '.$item->getAttributes().'>';
+        $link .= ' '. $item->title . '</a></li>'.PHP_EOL;
+        return $link;
     }
 
     /**
      * {@inheritdoc }.
      */
-    public function getActiveState($item, $state = ' class="active"')
+    public function getActiveState($item, $state = ' class="current"')
     {
-        return \Request::is($item->getRequest()) ? $state : null;
+        return $item->isActive() ? $state : null;
     }
 
     /**
@@ -68,7 +72,7 @@ class HeaderMenuPresenter extends Presenter
      *
      * @return null|string
      */
-    public function getActiveStateOnChild($item, $state = 'active')
+    public function getActiveStateOnChild($item, $state = 'current')
     {
         return $item->hasActiveOnChild() ? $state : null;
     }
@@ -86,7 +90,7 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getHeaderWrapper($item)
     {
-        return '<li>'.$item->title.'</li>';
+        return '<li class="dropdown-menu">'.$item->title.'</li>';
     }
 
     /**
@@ -94,9 +98,9 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getMenuWithDropDownWrapper($item)
     {
-        return '<li class="'.$this->getActiveStateOnChild($item, ' active').'">
-		          <a href="'.$item->getUrl().'">
-					'.$item->getIcon().' '.$item->title.'
+        return '<li>
+		          <a class="'.$this->getActiveState($item, ' current').$this->getActiveStateOnChild($item, ' current').'" href="'.$item->getUrl().'">
+				    '.$item->title.'
 			      </a>
 			      <ul>
 			      	'.$this->getChildMenuItems($item).'
@@ -111,11 +115,11 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getMegaMenuWithDropDownWrapper($item)
     {
-        return '<li class="'.$this->getActiveStateOnChild($item, ' active').'">
-		          <a href="#">
+        return '<li class="c-menu-type-classic '.$this->getActiveStateOnChild($item, ' current').'">
+		          <a href="#" class="c-link dropdown-toggle">
 					'.$item->getIcon().' '.$item->title.'
 			      </a>
-			      <ul>
+			      <ul class="dropdown-menu c-menu-type-classic c-pull-left">
 			        '.$this->getMegaMenuItems($item).'
 			      </ul>
 		      	</li>'
@@ -128,7 +132,7 @@ class HeaderMenuPresenter extends Presenter
      */
     public function getMultiLevelDropdownWrapper($item)
     {
-        return '<li class="'.$this->getActiveStateOnChild($item, ' active').'">
+        return '<li class="'.$this->getActiveStateOnChild($item, ' current').'">
 		          <a href="'.$item->getUrl().'">
 					'.$item->getIcon().' '.$item->title.'
 			      </a>

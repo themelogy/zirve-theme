@@ -58,6 +58,6 @@
             </div>
         @endforeach
         <hr/>
-        {!! $childs->links() !!}
+        {!! $childs->links('partials.pagination') !!}
     @endif
 @endif

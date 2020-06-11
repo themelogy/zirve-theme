@@ -64,11 +64,11 @@
 </div>
 
 @push('js-stack')
-    <script src="{{ elixir('js/contact.min.js', 'themes/zirve') }}" defer></script>
+    {!! Theme::script('js/contact.min.js') !!}
 @endpush
 
 @push('js-inline')
-    <script async>
+    <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             @if(App::environment()=='local')
                 Vue.config.devtools = true;

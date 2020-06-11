@@ -6,18 +6,11 @@
   //background-repeat: repeat;
   background-color: $top-bg;
   height: 40px;
+  @include top-border;
 }
 
 @media (max-width: 992px) {
   .header-top {
     max-height: none;
-  }
-}
-
-.logo {
-  display: block;
-  img {
-    width: auto;
-    height: 120px;
   }
 }
