@@ -14,6 +14,7 @@
                 </div>
                 <div class="col-md-8">
                     @include('carrental::partials.reservation-form')
+                    {{-- <h4 style="text-align: center; padding: 50px;">26 Temmuz 2021 tarihine kadar tüm araçlarımız kiralanmıştır. <br/>İlginiz için teşekkür ederiz.</h4> --}}
                 </div>
             </div>
             <div class="gap"></div>

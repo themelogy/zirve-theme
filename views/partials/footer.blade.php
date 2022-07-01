@@ -12,7 +12,7 @@
             <div class="col-lg-2 col-sm-12">
                 <div class="call-center pull-right-lg">
                     <div class="title">MÜŞTERİ HİZMETLERİ</div>
-                    <div class="phone"><a rel="nofollow" href="tel:{{ setting('theme::phone') }}">{{ setting('theme::phone') }}</a></div>
+                    <div class="phone"><a id="phone-call" rel="nofollow" href="tel:{{ setting('theme::phone') }}">{{ setting('theme::phone') }}</a></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="fifteen-year">

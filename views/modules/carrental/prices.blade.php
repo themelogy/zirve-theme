@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <th>{{ trans('carrental::cars.form.price5') }}</th>
-                                <td>{{ $car->prices->price1 }} TL</td>
+                                <td>{{ $car->prices->price5 }} TL</td>
                             </tr>
                             <tr>
                                 <th>{{ trans('carrental::cars.form.price6') }}</th>

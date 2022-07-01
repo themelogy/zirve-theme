@@ -10,13 +10,13 @@
                     <address title="{{ $location->name }}">
                         {{ $location->present()->address }}<br/>
                         @isset($location->phone1)
-                            <abbr title="Telefon">T:</abbr><a href="tel:{{ $location->phone1 }}">{{ $location->phone1 }}</a><br/>
+                            <abbr title="Telefon">T:</abbr><a id="phone-call" href="tel:{{ $location->phone1 }}">{{ $location->phone1 }}</a><br/>
                         @endisset
                         @isset($location->phone2)
-                            <abbr title="Telefon">T:</abbr><a href="tel:{{ $location->phone2 }}">{{ $location->phone2 }}</a><br/>
+                            <abbr title="Telefon">T:</abbr><a id="phone-call" href="tel:{{ $location->phone2 }}">{{ $location->phone2 }}</a><br/>
                         @endisset
                         @isset($location->mobile)
-                            <abbr title="Mobil">M:</abbr><a href="tel:{{ $location->mobile }}">{{ $location->mobile }}</a>
+                            <abbr title="Mobil">M:</abbr><a id="phone-call" href="tel:{{ $location->mobile }}">{{ $location->mobile }}</a>
                         @endisset
                         <div class="mt20 google-map" style="width:100%; height: 150px;" id="map{{ $location->id }}"></div>
                     </address>
