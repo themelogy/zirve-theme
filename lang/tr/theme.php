@@ -2,7 +2,6 @@
 
 return [
   'title' => [
-      'homepage' => 'Anasayfa',
-      'services' => 'Hizmetlerimiz'
+      'homepage' => 'Anasayfa'
   ]
 ];

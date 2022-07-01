@@ -6,33 +6,12 @@
 //     });
 // });
 
-// $('ul.slimmenu').slimmenu({
-//     resizeWidth: '992',
-//     collapserTitle: 'Menu',
-//     animSpeed: 250,
-//     indentChildren: true,
-//     childrenIndenter: ''
-// });
-
-var mainMenu = $('#main-menu');
-
-mainMenu.smartmenus({
-    mainMenuSubOffsetX: 0,
-    mainMenuSubOffsetY: 0,
-    subMenusSubOffsetX: 0,
-    subMenusSubOffsetY: -3
-});
-
-mainMenu.bind({
-    'show.smapi': function(e, menu) {
-        $(menu).removeClass('hide-animation').addClass('show-animation');
-    },
-    'hide.smapi': function(e, menu) {
-        $(menu).removeClass('show-animation').addClass('hide-animation');
-    }
-}).on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', 'ul', function(e) {
-    $(this).removeClass('show-animation hide-animation');
-    e.stopPropagation();
+$('ul.slimmenu').slimmenu({
+    resizeWidth: '992',
+    collapserTitle: 'Menu',
+    animSpeed: 250,
+    indentChildren: true,
+    childrenIndenter: ''
 });
 
 var unveilImg = $(".lazyloader");
@@ -62,6 +41,50 @@ $('.form-group').each(function() {
     });
 });
 
+$('.booking-item-price-calc .checkbox label').click(function() {
+    var checkbox = $(this).find('input'),
+        // checked = $(checkboxDiv).hasClass('checked'),
+        checked = $(checkbox).prop('checked'),
+        price = parseInt($(this).find('span.pull-right').html().replace('$', '')),
+        eqPrice = $('#car-equipment-total'),
+        tPrice = $('#car-total'),
+        eqPriceInt = parseInt(eqPrice.attr('data-value')),
+        tPriceInt = parseInt(tPrice.attr('data-value')),
+        value,
+        animateInt = function(val, el, plus) {
+            value = function() {
+                if (plus) {
+                    return el.attr('data-value', val + price);
+                } else {
+                    return el.attr('data-value', val - price);
+                }
+            };
+            return $({
+                val: val
+            }).animate({
+                val: parseInt(value().attr('data-value'))
+            }, {
+                duration: 500,
+                easing: 'swing',
+                step: function() {
+                    if (plus) {
+                        el.text(Math.ceil(this.val));
+                    } else {
+                        el.text(Math.floor(this.val));
+                    }
+                }
+            });
+        };
+    if (!checked) {
+        animateInt(eqPriceInt, eqPrice, true);
+        animateInt(tPriceInt, tPrice, true);
+    } else {
+        animateInt(eqPriceInt, eqPrice, false);
+        animateInt(tPriceInt, tPrice, false);
+    }
+});
+
+
 $('div.bg-parallax').each(function() {
     var $obj = $(this);
     if($(window).width() > 992 ){
@@ -79,6 +102,8 @@ $('div.bg-parallax').each(function() {
         });
     }
 });
+
+
 
 $(document).ready(
     function() {

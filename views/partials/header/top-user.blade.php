@@ -1,17 +1,12 @@
 <div class="top-user-area clearfix">
     <ul class="top-user-area-list list list-horizontal list-border socials">
         <li>
-            <div class="top-link">
-                <a href="#"><i class="fa fa-credit-card mr5"></i> <span class="hidden-xs">ONLINE ÖDE</span></a>
+            <div class="top-phone">
+                <a rel="nofollow" href="tel:{{ setting('theme::mobile') }}"><i class="fa fa-phone-square mr5"></i> {{ setting('theme::mobile') }}</a>
             </div>
         </li>
         <li>
-            <div class="top-link">
-                <a href="#"><i class="fa fa-car mr5"></i> <span class="hidden-xs">TAŞIT TANIMA SİSTEMİ</span></a>
-            </div>
-        </li>
-        <li>
-            @include('partials.components.socials', ['listClass'=>'list list-horizontal list-space top-socials', 'iconClass'=>''])
+            @include('partials.components.socials', ['listClass'=>'list list-horizontal list-space', 'iconClass'=>''])
         </li>
         @auth
             <li class="top-user-area-avatar nav-drop">
@@ -25,14 +20,14 @@
             <li><a href="{{ LaravelLocalization::getLocalizedURL(locale(), route('logout')) }}">Çıkış</a></li>
         @endauth
         <li class="top-user-area-lang nav-drop">
-            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ LaravelLocalization::getLocalizedURL(locale(), route('homepage')) }}">
-                <strong>{{ mb_strtoupper(LaravelLocalization::getCurrentLocaleNative()) }}</strong><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+            <a href="{{ LaravelLocalization::getLocalizedURL(locale(), route('homepage')) }}">
+                <img src="{{ Theme::url('img/flags/32/'.locale().'.png') }}" alt="{{ LaravelLocalization::getCurrentLocaleNative() }}" title="{{ LaravelLocalization::getCurrentLocaleNative() }}" />{{ strtoupper(LaravelLocalization::getCurrentLocale()) }}<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
             </a>
             <ul class="list nav-drop-menu">
                 @foreach(LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale)
                     <li>
                         <a href="{{ LaravelLocalization::getLocalizedURL($locale, route('homepage')) }}">
-                            <span>{{ mb_strtoupper($supportedLocale['native']) }}</span>
+                            <img class="mr10" src="{{ Theme::url('img/flags/32/'.$locale.'.png') }}" alt="{{ $supportedLocale['native'] }}" title="{{ $supportedLocale['native'] }}" /><span>{{ strtoupper($locale) }}</span>
                         </a>
                     </li>
                 @endforeach

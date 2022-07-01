@@ -1,4 +1,4 @@
-<ul class="{{ $listClass ?? 'list list-horizontal list-space top-socials' }}">
+<ul class="{{ $listClass ?? 'list list-horizontal list-space' }}">
     @foreach(['facebook' => 'fa-facebook-f', 'instagram'=>'fa-instagram', 'twitter'=>'fa-twitter', 'google'=>'fa-google-plus', 'whatsapp'=>'fa-whatsapp', 'linkedin'=>'fa-linkedin', 'youtube'=>'fa-youtube-play'] as $sk => $sv)
         @if(setting('theme::'.$sk) && $sk == 'whatsapp')
             <li>

@@ -1,12 +1,9 @@
 {!! seo_helper()->render() !!}
-<link rel="shortcut icon" href="{!! Theme::url('img/favicon.png') !!}" type="image/png">
+<link rel="shortcut icon" href="{!! Theme::url('img/logo/favicon.png') !!}" type="image/png">
 
 <script async>
     WebFontConfig = { google: {
-            families: [
-                'Roboto::latin-ext',
-                'Open Sans::latin-ext',
-                'Roboto Condensed:latin-ext'
+            families: ['Roboto:400,300,100,500,700:latin-ext', 'Open Sans:400italic,400,300,600:latin-ext', 'Roboto Condensed:400,300,100,500,700:latin-ext'
             ]
         }};
     (function(d) {
@@ -23,7 +20,7 @@
     {!! Theme::style('css/icomoon.css') !!}
     {!! Theme::style('css/styles.css') !!}
 @else
-    {!! Theme::style('css/style.min.css') !!}
+    <link rel="stylesheet" href="{{ elixir('css/style.min.css', 'themes/zirve') }}">
 @endif
 
 <!--[if lt IE 9]>

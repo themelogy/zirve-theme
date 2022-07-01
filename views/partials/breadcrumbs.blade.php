@@ -1,6 +1,6 @@
 @if ($breadcrumbs)
     <ol class="pull-left">
-        <li><a href="{{ route('homepage') }}"><img height="15" src="{!! Theme::url('img/favicon.png') !!}" alt="{{ setting('theme::company-name') }} favicon logo" /></a></li>
+        <li><a href="{{ route('homepage') }}"><img height="15" src="{!! Theme::url('img/logo/logo-z.svg') !!}" alt="{{ setting('theme::company-name') }} favicon logo" /></a></li>
         @foreach ($breadcrumbs as $crumb)
             <?php
             $icon = isset($crumb->icon) ? '<i class="' . $crumb->icon . '"></i> ' : '';

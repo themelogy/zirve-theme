@@ -1,8 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-    @themeSlide('anasayfa')
+
+    @include('carrental::home.search')
+
     @pageFindByOptions('settings.show_page_home', 'home')
-    @pageFindByOptions('settings.show_services', 'services')
-    @newsLatestPosts(10, 'latest')
+
+    @carFindByOptions('settings.show_home', 'home')
+
+    @carClasses('home.classes')
+
+    @blogLatestPosts(10)
+
 @endsection

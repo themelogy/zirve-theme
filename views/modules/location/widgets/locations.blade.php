@@ -33,7 +33,7 @@
             var marker{{ $location->id }} = new google.maps.Marker({
                 position: coordinate{{ $location->id }},
                 map: map{{ $location->id }},
-                icon: "{{ Theme::url('img/marker.png') }}"
+                icon: "{{ Theme::url('img/logo/marker.svg') }}"
             });
             @endforeach
         }
